@@ -1,4 +1,3 @@
-# Responsive design assignment project
+# Usukhbayar Tumenbayar
 
-https://temuulennibno.github.io/assignment-responsive/
-# Leap-Assignments
+## Team Green
