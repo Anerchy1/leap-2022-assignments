@@ -1,0 +1,41 @@
+.body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outerbox{
+    position: relative;
+    width: 120px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 30px;
+    border: 1px solid black;
+    transition: 1s all ;
+}
+.outerbox:active{
+    border: 0px;
+    background-color: teal;
+}
+.outerbox:active .innerbox{
+    left: 50%;
+}
+.innerbox{
+    position: absolute;
+    left: 0px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: 0.5s all;
+}
+
+
+
+
+
+
+
+
+
