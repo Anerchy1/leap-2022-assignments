@@ -22,7 +22,7 @@ body{
     text-transform: uppercase;
     color: #fff;
 }
-.box:active{
+.box:hover{
     background-color: red;
 }
 .circle{
@@ -39,7 +39,7 @@ body{
     transition: 0.7s all;
 }
 
-.box:active .circle{
+.box:hover .circle{
     top: 15px;
     right: 190px;
     z-index: -1;
