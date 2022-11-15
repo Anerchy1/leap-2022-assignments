@@ -7,6 +7,41 @@ body{
 }
 
 .box{
-    width: 300px;
+    position: relative;
+    width: 450px;
     height: 100px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 1s all;
+}
+.box p{
+    font-size: 48px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.box:active{
+    background-color: red;
+}
+.circle{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: red;
+    right: -25px;
+    top: -25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.7s all;
+}
+
+.box:active .circle{
+    top: 15px;
+    right: 190px;
+    z-index: -1;
+    
 }
