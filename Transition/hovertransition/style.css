@@ -28,8 +28,10 @@ p{
 
 .bluebox:active{
     width: 100%;
+    background-color: blueviolet;
 }
 
 .greenbox:hover{
     width: 100%;
+    background-color: aqua;
 }
