@@ -11,6 +11,7 @@ body {
 }
 p{
     margin: 0;
+    cursor: pointer;
 }
 .outerBox{
     height: 700px;
@@ -40,5 +41,6 @@ p{
 .innerBox:active{
     height: 200px;
     font-size: 50px;
+    padding: 60px;
 }
 
