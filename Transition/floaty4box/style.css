@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(254, 250, 247);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.outerBox{
+    width: 600px;
+    height: 600px;
+    border: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+position: relative;
+}
+
+.backBox{
+    
+    margin:30px 15px;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    box-shadow: 0 0 30px rgb(219, 219, 219);
+}
+
+.topBox1{
+    position: absolute;
+    margin: 40px 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 137, 137);
+    opacity: 40%;
+    top: 143.5px;
+    left: 163.5px;
+    transition: 1s;
+}
+.outerBox:hover .topBox1{
+        opacity: 100%;
+        top: -40px;
+        left: -20px;
+}
+.topBox2 {
+    position: absolute;
+    margin: 40px 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 137, 137);
+    opacity: 40%;
+    top: 143.5px;
+    right: 163.5px;
+    transition: 1s;
+}
+.outerBox:hover .topBox2{
+    top: -40px;
+    right: -20px;
+    opacity: 100%;
+}
+.topBox3 {
+    position: absolute;
+    margin: 40px 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 137, 137);
+    opacity: 40%;
+    bottom: 143.5px;
+    left: 163.5px;
+    transition: 1s;
+}
+.outerBox:hover .topBox3{
+    bottom: -40px;
+    left: -20px;
+    opacity: 100%;
+}
+.topBox4 {
+    position: absolute;
+    margin: 40px 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 137, 137);
+    opacity: 40%;
+    bottom: 143.5px;
+    right: 163.5px;
+    transition: 1s;
+}
+.outerBox:hover .topBox4{
+    bottom: -40px;
+    right: -20px;
+    opacity: 100%;
+}
+
