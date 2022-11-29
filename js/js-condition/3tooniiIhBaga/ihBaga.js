@@ -1,0 +1,30 @@
+let a=19,b=10,c=10, some=0;
+
+if(a>b && a>c && b>c){
+    console.log('a ih',a , 'c baga', c);
+}else if(a>b && a>c && c>b){
+    console.log('a ih',a , 'b baga', b);
+}else if(b>a && b>c && a>c){
+    console.log('b ih',b, 'c baga', c);
+}else if(b>a && b>c && c>a){
+    console.log('b ih',b, 'a baga', a);
+}else if(c>a && c>b && a>b){
+    console.log('c ih',c, 'b baga', b);
+}else if(c>a && c>b && b>a){
+    console.log('c ih',c, 'a baga', a);
+}else if(a===b && a>c ){
+    console.log('a b tentsuu c-s ih',a,',c baga', c);
+}else if(a===c && a>b){
+    console.log('a c tentsuu b-s ih',a,',b baga', b);
+}else if(b===c && b>a){
+    console.log('b c tentsuu a-s ih',b,',a baga', a);
+}
+else if(a===b && c>a ){
+    console.log('a b tentsuu c-s baga',a,',c ih', c);
+}else if(a===c && b>a){
+    console.log('a c tentsuu b-s baga',a,',b ih', b);
+}else if(b===c && a>b){
+    console.log('b c tentsuu a-s baga',b,',a ih', a);
+}else if(a===b & a===c){
+    console.log('a b c tentsuu');
+}
