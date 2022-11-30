@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        const str1 = `Hello Everyone`, str2 = '\t\t\b\\\r\fMy name\'s', str3 = "\nAnerchy";
+
+        const message = str1 + str2 + str3;
+        console.log(message);
+        const message1 = `${str1} everyone ${str2} ${str3}`;
+        console.log(message1);
+        console.log(str3.length);
+        console.log(str1[0]);
+        console.log(str1.toUpperCase());
+        // ehleh index and heden temdegt awah too
+        console.log(str1.substr(0, 7));
+        // ehleh index and duusah index
+        console.log(str1.substring(3, 7));
+
+        const iof = 'This is string';
+        console.log(iof.indexOf(" is"));
+        console.log(iof.substr(0, iof.indexOf('is')));
+
+
+        //hooson zai hasah .trim
+
+
+        //prompt //too ruu horwuuleh
+
+        // const prompt1 = prompt('Too oruulna uu!')
+        // const prompt2 = prompt('Too oruulna uu!')
+        // const promtpNumber1 = Number(prompt1);
+        // const promtpNumber2 = Number(prompt2);
+        // console.log(promtpNumber1 + promtpNumber2);
+
+        //surug toog eyreg tooruu horwuulne.
+        let A = 5, B = 9;
+        const diff = Math.abs(A - B);
+        console.log(diff);
+
+        //toonii ih,baga iig oloh
+        console.log(Math.max(12, 2, 5, 1, 3, 14));
+        console.log(Math.min(0, -1, 2, 3,));
+
+        //toonii zereg
+        console.log(Math.pow(5, 3));
+
+        // random too gargana
+        const random = Math.floor(Math.random() * (999 - 100)) + 100;
+        console.log(random);
+        //yzguur 
+        Math.sqrt(9); //3
+
+    </script>
+
+</body>
+
+</html>

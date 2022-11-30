@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //1
+
+        let year = 2022, month = 11, day = 3;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        if (day < 10) {
+            day = '0' + day;
+        }
+        console.log(year, '-', month, '-', day);
+
+        //2
+
+        let number = '88123456';
+        if (Number(number.substr(0, 2)) === 99 || Number(number.substr(0, 2)) === 95) {
+            console.log('Mobicom');
+        } else if (Number(number.substr(0, 2)) === 88 || Number(number.substr(0, 2)) === 85) {
+            console.log('Unitel');
+        } else if (Number(number.substr(0, 2)) === 91 || Number(number.substr(0, 2)) === 90) {
+            console.log('Skytel');
+        }
+
+    </script>
+</body>
+
+</html>
