@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let nP = Number((prompt('urvuulah toogoo oruul!')));
+        let rev = 0;
+        let lastdigit;
+        let lnP = nP;
+        while (nP != 0) {
+            lastdigit = nP % 10;
+            rev = rev * 10 + lastdigit;
+            nP = Math.floor(nP / 10);
+        }
+        if (lnP === rev) {
+
+            console.log('true');
+        } else {
+            console.log('false');
+        } console.log(lnP);
+        console.log(rev);
+    </script>
+</body>
+
+</html>
