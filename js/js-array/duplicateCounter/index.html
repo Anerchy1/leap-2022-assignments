@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Counter</title>
+</head>
+
+<body>
+    <script>
+        const n = '12344567890111111';
+        let sum;
+
+        for (let i = 0; i < 10; i++) {
+
+
+            sum = 0;
+            for (let j = 0; j < n.length; j++) {
+                if (parseInt(n[j]) === i) {
+                    sum++;
+                }
+            }
+
+            console.log(`${i} : ${sum}`);
+
+        }
+    </script>
+</body>
+
+</html>

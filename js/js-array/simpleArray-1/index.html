@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Array 1</title>
+</head>
+
+<body>
+    <script>
+        const itCompanies = ['Facebook', 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle', 'Amazon'];
+
+        console.log(itCompanies);
+        for (let i = 0; i < itCompanies.length; i++) {
+
+            if (i === 0) {
+                console.log(`First Company : ${itCompanies[i]}`);
+            } else if (i === Math.floor(itCompanies.length / 2)) {
+                console.log(`Middle Company : ${itCompanies[i]}`);
+            } else if (i === (itCompanies.length - 1)) {
+                console.log(`Last Company : ${itCompanies[i]}`);
+            }
+
+            console.log(`Company name: ${itCompanies[i]}, Company name but Upperletter: ${itCompanies[i].toUpperCase()} , Company name length: ${itCompanies[i].length}`);
+
+
+        } console.log(`${itCompanies} zereg ni medeelel tehnologiin tomoohon companiud`);
+    </script>
+</body>
+
+</html>
