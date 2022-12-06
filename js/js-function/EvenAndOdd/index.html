@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even && Odd</title>
+</head>
+
+<body>
+    <script>
+
+        function oddArray(odd1, odd2) {
+
+            let b = odd2, a = odd1;
+            const oddArr = [];
+
+            if (a < b) {
+                let oddIndex = 0;
+                for (let a = odd1; a <= b; a++) {
+                    if (a % 2 !== 0) {
+                        oddArr[oddIndex] = a;
+                        oddIndex++;
+                    }
+                }
+            } else
+                console.log('a-too chin b-geesee baga baih ystoi!!!');
+            console.log(odd1, odd2);
+            console.log(oddArr);
+        }
+        oddArray(5, 15);
+
+        function evenArray(even1, even2) {
+            const evenArr = [];
+            let a = even1;
+            if (even1 < even2) {
+                let evenIndex = 0;
+                for (let a = even1; a <= even2; a++) {
+                    if (a % 2 === 0) {
+                        evenArr[evenIndex] = a;
+                        evenIndex++;
+                    }
+                }
+            } else {
+                console.log('');
+            }
+            console.log(evenArr);
+            console.log(even1, even2);
+        }
+        evenArray(5, 15);
+    </script>
+</body>
+
+</html>

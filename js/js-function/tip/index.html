@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip</title>
+</head>
+
+<body>
+    <script>
+
+        const tulbur = [3000, 27500, 100000];
+
+        function nemeltTulbur(gonchigoo) {
+
+            let result = [];
+            for (let i = 0; i < gonchigoo.length; i++) {
+                if (gonchigoo[i] >= 5000 && gonchigoo[i] <= 30000) {
+                    result[i] = (gonchigoo[i] * 15) / 100;
+
+                } else {
+                    result[i] = (gonchigoo[i] * 20) / 100;
+                }
+            }
+            console.log(`Tanii nemelt tulbur: ${result}`);
+        }
+        nemeltTulbur(tulbur);
+
+        function niitTulbur(gonchigoo) {
+            let result = [];
+            for (let i = 0; i < gonchigoo.length; i++) {
+                if (gonchigoo[i] >= 5000 && gonchigoo[i] <= 30000) {
+                    gonchigoo[i] += (gonchigoo[i] * 15) / 100;
+                    result[i] = gonchigoo[i];
+                } else {
+                    gonchigoo[i] += (gonchigoo[i] * 20) / 100;
+                    result[i] = gonchigoo[i];
+                }
+            }
+            console.log(`Tanii niit tulbur: ${result}`);
+        }
+        niitTulbur(tulbur);
+
+
+        function avarageNiitTulbur(gonchigoo) {
+
+            let result = 0;
+            for (let i = 0; i < gonchigoo.length; i++) {
+                result += gonchigoo[i];
+
+            } result = result / 3;
+
+
+            console.log(`Tanii niit tulburiin dundaj: ${result}`);
+        }
+        avarageNiitTulbur(tulbur);
+    </script>
+</body>
+
+</html>
