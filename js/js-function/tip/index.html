@@ -23,10 +23,9 @@
                 } else {
                     result[i] = (gonchigoo[i] * 20) / 100;
                 }
-            }
-            console.log(`Tanii nemelt tulbur: ${result}`);
+            } return `Tanii nemelt tulbur: ${result}`;
         }
-        nemeltTulbur(tulbur);
+        console.log(nemeltTulbur(tulbur));
 
         function niitTulbur(gonchigoo) {
             let result = [];
@@ -44,13 +43,13 @@
         niitTulbur(tulbur);
 
 
+
         function avarageNiitTulbur(gonchigoo) {
 
             let result = 0;
             for (let i = 0; i < gonchigoo.length; i++) {
                 result += gonchigoo[i];
-
-            } result = result / 3;
+            } result = result / gonchigoo.length;
 
 
             console.log(`Tanii niit tulburiin dundaj: ${result}`);

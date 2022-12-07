@@ -15,23 +15,20 @@
         console.log(`Ehnii array: ${arr}`);
 
         function arraySorter(arr) {
-            let sortedArr = [];
             for (let i = 0; i < arr.length; i++) {
                 for (let j = i + 1; j < arr.length; j++) {
 
-                    if (arr[i] < arr[j]) {
-                        sortedArr[i] = arr[i];
-
-                    } else {
-                        sortedArr[i] = arr[j];
+                    if (arr[i] > arr[j]) {
                         let swapper = arr[i];
                         arr[i] = arr[j];
                         arr[j] = swapper;
                     }
                 }
-            } console.log(`Sort hiisen array: ${sortedArr}`);
+            }
+
+            return `Sort hiisen array: ${arr}`
         }
-        arraySorter(arr);
+        console.log(arraySorter(arr));
     </script>
 </body>
 
