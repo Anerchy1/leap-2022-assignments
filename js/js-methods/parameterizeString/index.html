@@ -12,8 +12,8 @@
     <script>
         function parameterize(paraStr) {
             const paraArr = paraStr.split(' ');
-            paraArr.join('-');
-            console.log(`${paraArr.join('-')}`);
+
+            console.log(`${paraArr.join('-').toLowerCase()}`);
         }
         parameterize('This Is Where I Begin')
 

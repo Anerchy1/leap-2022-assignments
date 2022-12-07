@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Number</title>
+</head>
+
+<body>
+    <script>
+        function isCorrectReg(reg) {
+            if (reg.length == 10 && isNaN(reg.substr(0, 1)) && isNaN(reg.substr(1, 1)) && !isNaN(reg.substr(2, 8))) {
+                return 'та монгол улсын регистрийн дугаарыг зөв орууллаа';
+            } else {
+                return 'та монгол улсын иргэний бүртгэлийн дугаарыг буруу орууллаа';
+            }
+
+        }
+        function getGender(reg) {
+            const secondLastDigit = Number(reg.substr(8, 1));
+            if (secondLastDigit % 2 === 0) {
+                return 'emegtei';
+                // console.log(huis);
+            }
+            return 'eregtei';
+            // console.log(huis);
+        }
+        //tursun udur oloh
+        function getBday(reg) {
+            let day = Number(reg.substr(6, 2));
+            let isBornInTwenties = false;
+            const fifthDigit = reg[4];
+            if (fifthDigit === 3 || fifthDigit === 2)
+                isBornInTwenties = true;
+            let month = Number(reg.substr(4, 2));
+            if (isBornInTwenties)
+                month -= 20;
+
+            let year = reg.substr(2, 2);
+            if (isBornInTwenties) {
+                year = 20 + year;
+            } else {
+                year = 19 + year;
+            }
+            year = Number(year);
+
+            return (`${year}-${month}-${day}`);
+        }
+        // aimag 
+        function getBirthRegion(reg) {
+            const firstLetter = reg.substr(0, 1);
+
+            if (firstLetter == 'У') {
+                aimag = 'Ulaanbaatar';
+            } else if (firstLetter == 'А') {
+                aimag = 'Arhangai';
+            }
+            else if (firstLetter == 'Б') {
+                aimag = 'Bayan-Olgii';
+            }
+            else if (firstLetter == 'В') {
+                aimag = 'Bayanhongor';
+            }
+            else if (firstLetter == 'Г') {
+                aimag = 'Bulgan';
+            }
+            else if (firstLetter == 'Д') {
+                aimag = 'Govi-Altai';
+            }
+            else if (firstLetter == 'Е') {
+                aimag = 'Dornogovi';
+            }
+            else if (firstLetter == 'Ж') {
+                aimag = 'Dornod';
+            }
+            else if (firstLetter == 'З') {
+                aimag = 'Dundgovi';
+            }
+            else if (firstLetter == 'И') {
+                aimag = 'Zavhan';
+            }
+            else if (firstLetter == 'Й') {
+                aimag = 'Uvurhangai';
+            }
+            else if (firstLetter == 'К') {
+                aimag = 'Umnugovi';
+            }
+            else if (firstLetter == 'Л') {
+                aimag = 'Sukhbaatar';
+            }
+            else if (firstLetter == 'М') {
+                aimag = 'Selenge';
+            }
+            else if (firstLetter == 'Н') {
+                aimag = 'Tuv';
+            }
+            else if (firstLetter == 'О') {
+                aimag = 'Uvs';
+            }
+            else if (firstLetter == 'П') {
+                aimag = 'Hovd';
+            }
+            else if (firstLetter == 'Р') {
+                aimag = 'Huwsgul';
+            }
+            else if (firstLetter == 'С') {
+                aimag = 'Khentii';
+            }
+            else if (firstLetter == 'Т') {
+                aimag = 'Darkhan-Uul';
+            }
+            else if (firstLetter == 'Ф') {
+                aimag = 'Orkhon';
+            }
+            else if (firstLetter == 'Х') {
+                aimag = 'Govisumber';
+            }
+
+            return `${aimag} hot/aimag-t tursun`;
+        }
+        function getRegisterInfo(reg) {
+            const legitReg = isCorrectReg(reg);
+            const Gender = getGender(reg);
+            const birthDay = getBday(reg);
+            const aimag = getBirthRegion(reg)
+
+            if (legitReg == "та монгол улсын регистрийн дугаарыг зөв орууллаа") {
+
+                console.log(`${aimag}`);
+                console.log('Gender :', Gender);
+                console.log('Birthday :', birthDay);
+            } else console.log(`та монгол улсын иргэний бүртгэлийн дугаарыг буруу орууллаа'`);
+
+        }
+        getRegisterInfo('УШ96103137');
+    </script>
+</body>
+
+</html>
