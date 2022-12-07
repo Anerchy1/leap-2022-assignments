@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromic</title>
+</head>
+
+<body>
+    <script>
+
+        function isPalindromic(input) {
+            if (input === input.split('').reverse().join('')) {
+                console.log(`Palindromic mun!`);
+            } else console.log(`Palindromic bish!`);
+        }
+        isPalindromic(prompt());
+    </script>
+</body>
+
+</html>

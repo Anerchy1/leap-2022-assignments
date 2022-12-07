@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oochir</title>
+</head>
+
+<body>
+    <script>
+        // debugger
+        const queueLine = ["Bat", "Dorj", "Puntsag", "Gotow", "Bayaraa", "Bold", "Nawchaa", "Gonchigsumlai", "Tsetsegee",
+            "Nergui", "Balibiigombo", "Baatar", "Sukhee"];
+        queueLine.splice(queueLine.indexOf("Gonchigsumlai") + 1, 0, "egch1", "egch2");
+        console.log(`2 egchiig oruulsan buh humuus: ${queueLine}`);
+
+        queueLine.slice(0, 10);
+        console.log(`2 egchiig oruulsan ehnii 10n hun: ${queueLine.slice(0, 10)}`);
+    </script>
+</body>
+
+</html>

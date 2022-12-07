@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+</head>
+
+<body>
+    <script>
+
+
+        function Cart(shoppingCart) {
+
+            if (shoppingCart === shoppingCart.indexOf('Meat') && shoppingCart === shoppingCart.indexOf('Sugar')) {
+
+            } else {
+                shoppingCart.push('Sugar');
+                shoppingCart.splice(shoppingCart.indexOf('Honey'), 1);
+                shoppingCart.splice(shoppingCart.indexOf('Tea'), 1, 'Green Tea');
+                shoppingCart.unshift('Meat');
+            }
+            console.log(shoppingCart);
+        }
+        Cart(['Milk', 'Coffee', 'Tea', 'Honey'])
+
+    </script>
+</body>
+
+</html>
