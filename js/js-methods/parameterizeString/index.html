@@ -12,11 +12,11 @@
     <script>
         function parameterize(paraStr) {
             const paraArr = paraStr.split(' ');
+            return `${paraArr.join('-').toLowerCase()}`
 
-            console.log(`${paraArr.join('-').toLowerCase()}`);
         }
-        parameterize('This Is Where I Begin')
 
+        console.log(parameterize('This Is Where I Begin'));
 
     </script>
 </body>
