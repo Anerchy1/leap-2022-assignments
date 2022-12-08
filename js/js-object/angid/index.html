@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angid</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            { firstName: 'Anerchy', lastName: 'Tumenbayar', point: 90, age: 26, gender: 'male' },
+            { firstName: 'Axe', lastName: 'Bat', point: 60, age: 21, gender: 'male' },
+            { firstName: 'Drow', lastName: 'Dorj', point: 84, age: 25, gender: 'female' },
+            { firstName: 'Sniper', lastName: 'Gonchig', point: 95, age: 24, gender: 'male' },
+            { firstName: 'Jugg', lastName: 'Nergui', point: 70, age: 22, gender: 'male' },
+            { firstName: 'Alche', lastName: 'Sumlai', point: 78, age: 16, gender: 'male' },
+            { firstName: 'Razor', lastName: 'Temuul', point: 87, age: 50, gender: 'male' },
+            { firstName: 'Hurelsukh', lastName: 'Someone', point: 69, age: 21, gender: 'male' },
+            { firstName: 'Crystal', lastName: 'Ter', point: 99, age: 30, gender: 'female' },
+            { firstName: 'Rubick', lastName: 'Terbish', point: 100, age: 20, gender: 'unknown' }
+        ]
+        // huiseer n angilaj tooloh
+        function gender(list, gender) {
+            let male = 0, female = 0;
+            let counter = 0;
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].gender === gender)
+                    counter++
+            } return counter;
+        }
+        const femaleCounter = gender(data, 'female');
+        const maleCounter = gender(data, 'male');
+        console.log(`eregtei ni: ${maleCounter} , emegtei ni: ${femaleCounter}`);
+
+
+        function CountByFieldValueRange(list, key, min, max) {
+            let counter = 0;
+
+            for (let i = 0; list.length > i; i++) {
+                if (list[i][key] > min && list[i][key] < max) {
+                    counter++
+                }
+            } return counter;
+        }
+        // nasnii angilal : 0-17, 18-30, 30-55, 55+
+        const child = CountByFieldValueRange(data, 'age', 0, 18);
+        const youth = CountByFieldValueRange(data, 'age', 18, 30);
+        const adult = CountByFieldValueRange(data, 'age', 30, 55);
+        const elder = CountByFieldValueRange(data, 'age', 55, 100);
+        console.log(`Niit : ${child} huuhed, ${youth} zaluuchuud, ${adult} dundaj ergem nasnii humuus, ${elder} ahmad nasnii humuus baina`);
+
+        //dungeer n jagsaah
+        const totalA = CountByFieldValueRange(data, 'point', 90, 101);
+        console.log(`Niit A avsan: ${totalA}`);
+
+        //hussen string utga buhii talbaraas ni haidag function
+
+        function searchByName(list, key, searcher) {
+            let result;
+            for (let i = 0; i < list.length; i++) {
+
+                if (list[i][key].toLowerCase().includes(searcher)) {
+                    result = list[i];
+                }
+            } return result;
+        }
+        let searcher = prompt('Haih neree oruulna uu');
+
+        console.log(searchByName(data, 'firstName', searcher));
+
+    </script>
+</body>
+
+</html>

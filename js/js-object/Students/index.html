@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suragchid</title>
+</head>
+
+<body>
+    <script>
+        let students = [
+            { name: "Davaa", birthOfYear: 1999, hobby: "морь", single: false },
+            { name: "Bat", birthOfYear: 2007, hobby: "морь", single: true },
+            { name: "Tsetseg", birthOfYear: 2004, hobby: "морь", single: false },
+            { name: "Dorj", birthOfYear: 1995, hobby: "морь", single: true },
+            { name: "Ulaanaa", birthOfYear: 1997, hobby: "морь", single: false },
+        ]
+        function overTwentyYearsOld(data, key) {
+
+            const oldies = [];
+            for (i = 0; i < data.length; i++) {
+                if (data[i][key] <= 2002) {
+                    oldies.push(data[i]);
+                }
+            } return oldies
+        }
+        console.log(overTwentyYearsOld(students, 'birthOfYear'));
+
+
+        function getAgesOfStudents(data, key) {
+            let ages = [];
+            for (i = 0; i < data.length; i++) {
+                ages.push(2022 - data[i][key]);
+            }
+            return ages
+        }
+        console.log(getAgesOfStudents(students, 'birthOfYear'));
+        let singleBells = [];
+        function singleOrTaken(data, key) {
+            for (i = 0; i < data.length; i++) {
+                if (data[i][key] === true) {
+                    singleBells.push(data[i]);
+                }
+            } return singleBells
+        }
+        console.log(singleOrTaken(students, 'single'));
+    </script>
+</body>
+
+</html>

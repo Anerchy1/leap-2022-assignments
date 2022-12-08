@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delguuriin tailan</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            { productName: "Bakery", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "Chocolate", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Chocolate1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Chocolate2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery1", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cake", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cake1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cake2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery2", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cola1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cola2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Cola3", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery3", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "Sprite1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Sprite2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Sprite3", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery4", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "Fanta1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Fanta2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Fanta3", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery5", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "chiher1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "chiher2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "chiher3", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery6", unitPrice: 5000, amount: 200, totalPrice: 500000, casherId: 1, date: '2022-11-01' },
+            { productName: "tamhi1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "tamhi2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "tamhi3", unitPrice: 3000, amount: 18, totalPrice: 1200000, casherId: 1, date: '2022-11-01' },
+            { productName: "Bakery7", unitPrice: 5000, amount: 200, totalPrice: 1000000, casherId: 1, date: '2022-11-01' },
+            { productName: "vape1", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' },
+            { productName: "vape2", unitPrice: 3000, amount: 18, totalPrice: 54.000, casherId: 1, date: '2022-11-01' }
+        ];
+        //1.Нийт борлуулалтын дүнг тооцоолох.
+        function niitBorluulalt(data, key) {
+            let sum = 0;
+            for (i = 0; i < data.length; i++) {
+                sum += data[i][key];
+            } return sum
+        }
+        const Borluulalt = niitBorluulalt(data, 'totalPrice');
+
+        console.log(`Niit borluulaltiin dun: ${Borluulalt}`);
+
+        //2.Нийт борлуулагдсан барааны тоог тооцоолох.
+        const niitBaraaToo = niitBorluulalt(data, 'amount');
+
+        console.log(`Niit borluulagdsan baraanii too: ${niitBaraaToo}`);
+
+        // 3. Хамгийн их зарагдсан 5 барааны жагсаалт / боруулалтын үнийн дүнгээр / харуулах.
+        function mostSold(data, key) {
+            let mostSoldFiveUnit = [];
+            for (i = 0; i < data.length; i++) {
+                for (j = i + 1; j < data.length; j++) {
+                    if (data[i][key] < data[j][key]) {
+                        let swapper = data[i];
+                        data[i] = data[j];
+                        data[j] = swapper;
+                    }
+                }
+            }
+            for (i = 0; i < 5; i++) {
+                mostSoldFiveUnit.push(data[i]);
+            } return mostSoldFiveUnit
+        }
+        console.log(mostSold(data, 'totalPrice'));
+
+        // 4. Хамгийн их зарагдсан 5 барааны жагсаалт / боруулалтын тоо хэмжээгэр / харуулах.
+        // 5. Хамгийн бага зарагдсан 5 барааны жагсаалт / боруулалтын үнийн дүнгээр / харуулах.
+        // 6. Хамгийн бага зарагдсан 5 барааны жагсаалт / боруулалтын тоо хэмжээгээр / харуулах.
+        // 7. Хамгийн их зарагдсан / боруулалтын үнийн дүнгээр / 10 барааны боруулалтын үнийн дүнгийн нийт боруулалтанд эзлэх хувь харуулах.
+        // 8. Хамгийн их зарагдсан / боруулалтын тоо хэмжээгээр / 5 барааны тоо хэмжээ нийт барааны тоо хэмжээнд эзлэх хувь харуулах.
+        // 9. Хамгийн бага зарагдсан / боруулалтын үнийн дүнгээр / 5 барааны боруулалтын үнийн дүнгийн нийт боруулалтанд эзлэх хувь харуулах.
+        // 10. Хамгийн бага зарагдсан / боруулалтын тоо хэмжээгээр / 5 барааны тоо хэмжээ нийт барааны тоо хэмжээнд эзлэх хувь харуулах.
+    </script>
+</body>
+
+</html>

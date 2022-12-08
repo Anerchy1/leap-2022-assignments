@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessing Object</title>
+</head>
+
+<body>
+    <script>
+        let students = [
+            {
+                name: 'Сэд-Эрдэнэ',
+                age: 19,
+                gender: "male"
+            },
+            {
+                name: 'Индра',
+                age: 19,
+                gender: "female"
+            },
+            {
+                name: 'Bataa',
+                age: 19,
+                gender: "female"
+            },
+            {
+                name: 'Хатнаа ',
+                age: 21,
+                gender: "male"
+            },
+            {
+                name: 'Тэмүүлэн',
+                age: 23,
+                gender: "male"
+            },
+            {
+                name: 'Намуун',
+                age: 23,
+                gender: "female"
+            },
+        ]
+        function gender(list) {
+            let counter = 0, counter1 = 0;
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].gender === 'male')
+                    counter++
+                else counter1++
+            } let huis = {
+                female: counter1,
+                male: counter
+            }
+            return huis
+        }
+        console.log(gender(students));
+
+        //students average age
+        function ageAverage(list, key) {
+            average = 0;
+            for (let i = 0; i < list.length; i++) {
+                average += list[i][key];
+            } average = average / list.length;
+            return average
+        }
+        const dundajNas = ageAverage(students, 'age')
+        console.log(`Students average age: ${dundajNas}`);
+
+        // add nickname to students
+
+        function addNickName(list) {
+
+            for (i = 0; i < list.length; i++) {
+                const nM = prompt('Add nickname');
+                list[i].nickname = nM;
+            } return list
+        }
+        const added = addNickName(students);
+        console.log(added);
+
+        // find same aged students and push them to new array
+        function findSameAge(list, key) {
+            debugger
+            let counter = [];
+            for (let i = 0; i < list.length; i++) {
+                for (let j = i + 1; j < list.length; j++) {
+                    if (list[i][key] === list[j][key]) {
+
+                        if (!counter.includes(list[i])) {
+                            counter.push(list[i], list[j]);
+                        } else if (!counter.includes(list[j])) {
+                            counter.push(list[j])
+                        }
+                    }
+                }
+            } return counter
+        }
+        const newArr = findSameAge(students, 'age')
+        console.log(newArr);
+
+    </script>
+</body>
+
+</html>
