@@ -61,7 +61,7 @@ document.addEventListener('keypress', function(e){
 
     const rowDuplicates = isDuplicatedByRow(x,y,input);
     const colDuplicates = isDuplicatedByCol(x,y,input);
-    const boxDuplicates = isDuplicatedByBox(x,y,input);
+    const boxDuplicates = isDuplicatedByCell(x,y,input);
     const hasError= rowDuplicates || colDuplicates || boxDuplicates;
     if(hasError){
         chosenTD.classList.add('error');
@@ -91,20 +91,17 @@ function isDuplicatedByCol(x,y,input){
     return duplicated;
 }
 
-function isDuplicatedByBox(x,y,input){
-    // box iin daguu shalgah nuhtsul
-    let duplicated = false;
-
-    for(let i=0; i < 3 ; i++){
-        if(i !== x && !duplicated && sudoku[i][y] !== 0){
-        duplicated = input === sudoku[i][y];
-        }
+function isDuplicatedByCell(x, y, input) {
+    //box iin daguu shalgah
+  const cellXStart = x - (x % 3);
+  const cellYStart = y - (y % 3);
+  let duplicated = false;
+  for (let row = cellXStart; row < cellXStart + 3; row++) {
+    for (let col = cellYStart; col < cellYStart + 3; col++) {
+      if (row !== x && col !== y && sudoku[row][col]!==0 && !duplicated) {
+        duplicated = input === sudoku[row][col];
+      }
     }
-    
-    for(let j=0; j < 3; j++){
-        if(j!==y && !duplicated && sudoku[x][j] !== 0){
-        duplicated = input === sudoku[x][j];
-        }
-    }
-    return duplicated;
+  }
+  return duplicated;
 }
