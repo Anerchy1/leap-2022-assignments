@@ -24,7 +24,7 @@ function liCreater(e){
         const deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "x";
         const editBtn= document.createElement("button");
-        editBtn.innerHTML = "&#xf044"
+        editBtn.innerHTML = "Y"
         todoTarget.appendChild(li);
         li.appendChild(editBtn);
         li.appendChild(deleteBtn);
@@ -40,7 +40,7 @@ function liCreater(e){
             const deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "x";
         const editBtn= document.createElement("button");
-        editBtn.innerHTML = "&#xf044"
+        editBtn.innerHTML = "Y"
         todoTarget.appendChild(li);
         li.appendChild(editBtn);
         li.appendChild(deleteBtn);

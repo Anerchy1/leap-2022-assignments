@@ -16,7 +16,7 @@ document.getElementById("demo").innerHTML = "Date : " + Date();
 
 
 
-
+//`````~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`````````\
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
