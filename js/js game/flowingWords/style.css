@@ -1,0 +1,39 @@
+body{
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#gameBackground{
+    margin-right: 30px;
+    background-color: thistle;
+    height: 100vh;
+    width: 50vw;
+    position: relative;
+}
+#startNewGame{
+    border: 3px solid thistle;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#input{
+    border-radius: 10px;
+    padding:5px 10px;
+    border: 3px solid thistle;
+}
+
+.text{
+    position: absolute;
+    top: -5%;
+    transition:10s linear;
+}
+
+.text.active{
+    position: absolute;
+    top: 100vh;
+    bottom: 0;
+}
