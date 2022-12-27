@@ -42,7 +42,7 @@ function getPagination(total, currentPage,limit) {
     return pagination;   
 }
 
-async function getProducts(limit = 10, skip = 0) {
+async function getProducts(limit = 12, skip = 0) {
   productsTarget.innerHTML = '';
   // const res = await fetch(`http://dummyjson.com/products/search?q=laptop`);
   const res = await fetch(`http://dummyjson.com/products?limit=${limit}&skip=${skip}`);
@@ -57,5 +57,15 @@ async function getProducts(limit = 10, skip = 0) {
   }
   productsTarget.innerHTML += getPagination(data.total,skip/limit +1,limit);
 }
+
+// getProductCard. 
+
+
+
+
+
+
+
+
 
 getProducts();
