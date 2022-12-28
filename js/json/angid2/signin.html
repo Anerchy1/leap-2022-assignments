@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unetei</title>
+</head>
+
+<body class="min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="card" style="width:400px">
+        <form class="card-body" onsubmit="signUpSubmit(); return false;">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group mt-2">
+                <label for="repassword">Password repeat</label>
+                <input type="password" class="form-control" id="repassword" placeholder="Password repeat">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-4">Submit</button>
+
+            <div class="checker">
+                <p id="upperLet" class="invalid">Tom useg orson baih</p>
+                <p id="smallLet" class="invalid">Jijig useg orson baih</p>
+                <p id="number" class="invalid">Too orson baih</p>
+                <p id="special" class="invalid">Tusgai temdegt orson baih</p>
+                <p id="passLength" class="invalid">Dor hayj 8n orontoi baih</p>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./signin.js"></script>
+</body>
+
+</html>
