@@ -35,7 +35,7 @@ submitBtn.addEventListener('click', signUpSubmit);
 
 const UpperLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const SmallLetter = 'qwertyuiopasdfghjklzxcvbnm';
-const Specials = '?@#$%&*.';
+const Specials = '?@#$%&*.!';
 const Numbers = '0123456789';
 
 
@@ -44,55 +44,89 @@ passwordTarget.addEventListener('click', ()=>{
     checker.classList.add('clicked');
 });
 
-const smallLet = document.querySelector('#smallLet');
-const upperLet = document.querySelector('#upperLet');
-const special = document.querySelector('#special');
-const number = document.querySelector('#number');
-const passLength = document.querySelector('#passLength');
-passwordTarget.onkeyup = function(){
-    if(passwordTarget.value.includes(UpperLetter)){
-        smallLet.classList.remove('invalid');
-        smallLet.classList.add('valid');
+const smallLetTarget = document.querySelector('#smallLet');
+const upperLetTarget = document.querySelector('#upperLet');
+const specialTarget = document.querySelector('#special');
+const numberTarget = document.querySelector('#number');
+const passLengthTarget = document.querySelector('#passLength');
+
+const passwordChecker = (password, repassword)=>{
+    let small = false;
+    let upper = false;
+    let special = false;
+    let number = false;
+    let match = false;
+    let isAllGreen = false;
+
+    for(let char of password){
+        if(!small) small = SmallLetter.includes(char)
+        if(!upper) upper = UpperLetter.includes(char)
+        if(!special) special = Specials.includes(char)
+        if(!number) number = Numbers.includes(char)
     }
-    if(passwordTarget.value.includes(SmallLetter)){
-        upperLet.classList.remove('invalid');
-        upperLet.classList.add('valid');
+    match = password === repassword ;
+       if(match === true && small === true && upper === true && special === true && number === true){
+       isAllGreen = true
     }
-    if(passwordTarget.value.includes(Specials)){
-        special.classList.remove('invalid');
-        special.classList.add('valid');
+    return {
+        match , small , upper , special , number , isAllGreen,
     }
-    if(passwordTarget.value.includes(Numbers)){
-        number.classList.remove('invalid');
-        number.classList.add('valid');
+};
+
+passwordTarget.addEventListener('input',()=>{
+    let password = passwordTarget.value;
+    let repassword = repasswordTarget.value;
+    let passwordInfo = passwordChecker(password, repassword);
+    if(passwordInfo.small){
+        smallLetTarget.classList.remove('invalid');
+        smallLetTarget.classList.add('valid');
+    }else{
+        smallLetTarget.classList.remove('valid');
+        smallLetTarget.classList.add('invalid');
     }
-    if(passwordTarget.value.length >= 8){
-        passLength.classList.remove('invalid');
-        passLength.classList.add('valid');
+    if(passwordInfo.upper){
+        upperLetTarget.classList.remove('invalid');
+        upperLetTarget.classList.add('valid');
+    }else{
+        upperLetTarget.classList.remove('valid');
+        upperLetTarget.classList.add('invalid');
     }
-}
-const passwordChecker = () =>{
-    if(passwordTarget.value.includes(UpperLetter)){
-        smallLet.classList.remove('invalid');
-        smallLet.classList.add('valid');
+    if(passwordInfo.special){
+
+        specialTarget.classList.remove('invalid');
+        specialTarget.classList.add('valid');
+    }else{
+        specialTarget.classList.remove('valid');
+        specialTarget.classList.add('invalid');
     }
-    if(passwordTarget.value.includes(SmallLetter)){
-        upperLet.classList.remove('invalid');
-        upperLet.classList.add('valid');
+    if(passwordInfo.number){
+        numberTarget.classList.remove('invalid');
+        numberTarget.classList.add('valid');
+    }else{
+        numberTarget.classList.remove('valid');
+        numberTarget.classList.add('invalid');
+    }if(password.length >= 8){
+        passLengthTarget.classList.remove('invalid');
+        passLengthTarget.classList.add('valid');
+    }else{
+        passLengthTarget.classList.remove('valid');
+        passLengthTarget.classList.add('invalid');
+    } 
+     if(passwordInfo.isAllGreen){
+        submitBtn.classList.remove('disabled');
     }
-    if(passwordTarget.value.includes(Specials)){
-        special.classList.remove('invalid');
-        special.classList.add('valid');
+    else{
+        submitBtn.classList.add('disabled');
+    } 
+}); 
+repasswordTarget.addEventListener('input', ()=>{
+    let password = passwordTarget.value;
+    let repassword = repasswordTarget.value;
+    let passwordInfo = passwordChecker(password, repassword);
+    if(passwordInfo.isAllGreen){
+        submitBtn.classList.remove('disabled');
     }
-    if(passwordTarget.value.includes(Numbers)){
-        number.classList.remove('invalid');
-        number.classList.add('valid');
+    else{
+        submitBtn.classList.add('disabled');
     }
-    if(passwordTarget.value.length >= 8){
-        passLength.classList.remove('invalid');
-        passLength.classList.add('valid');
-    }
-    console.log(passwordTarget.value);
-}
-passwordChecker();
-console.log(passwordTarget.value);
+});
