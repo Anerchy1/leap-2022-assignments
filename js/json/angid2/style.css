@@ -39,3 +39,15 @@ body {
 .card{
     cursor: pointer;
 }
+.invalid{
+    color: red;
+}
+.valid {
+    color: green;
+}
+.checker{
+    display: none;
+}
+.clicked{
+    display: block;
+}

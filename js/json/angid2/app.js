@@ -92,10 +92,14 @@ const deleteCar = (id)=>{
             'Content-type': 'application/json',
         },
         body: JSON.stringify({id})
-    }).then(res=>res.json())
-    .catch((err)=>{
+    })
+    .then(res=>res.json())
+    .then((res)=>{
         alert('Successfully deleted');
         getCarsHtml();
+    })
+    .catch((err)=>{
+        console.warn();
     });
     // modal.hide();
     
