@@ -1,6 +1,23 @@
 import { useState } from "react"; 
 
-export default function NavbarAdminPanel({items =[], img}){
+function DropdownDivider(){
+    return (
+                            <li>
+                                <hr className="dropdown-divider" />
+                            </li>
+    )
+}
+function DropdownItem({item}) {
+    return (
+        <li>
+             <a className="dropdown-item" href={item.link}>
+                {item.label}
+            </a>
+        </li>
+    )
+    
+}
+export default function NavbarDropDown({items =[], img}){
     const [showDropDown, setShowDropDown] = useState(false);
 
     const toggleDropDown = () =>{
@@ -13,21 +30,9 @@ export default function NavbarAdminPanel({items =[], img}){
                     <img src={img}alt="mdo" href="https://pinecone.mn/" width="32" height="32" className="rounded-circle" />
                   </a>
                   <ul className={`dropdown-menu text-small end-0 ${showDropDown && 'show'}`}>
-                    {items.map((item)=>{
-                        if(item.label !== '---'){
-                            return (
-                                    <li>
-                                        <a className="dropdown-item" href={item.link}>
-                                            {item.label}
-                                        </a>
-                                    </li>
-                                );
-                        } 
-                        return (
-                            <li>
-                                <hr className="dropdown-divider" />
-                            </li>
-                        )
+                    {items.map((item , index)=>{
+                        if(item.label !== '---') return <DropdownDivider key={`dropdown-item-${index}`} />;
+                        return <DropdownItem item={item} key={`dropdown-item-${index}`} />;
                         
                     })}
                   </ul>
