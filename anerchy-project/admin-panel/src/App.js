@@ -9,8 +9,7 @@ function App(){
   return (
     <>
       <Navbar />
-      <ContentWrapper title = "Blog posts">
-      </ContentWrapper>
+      <ContentWrapper title = "Blog posts" />
     </>);
 }
 
