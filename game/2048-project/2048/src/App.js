@@ -128,11 +128,10 @@ function App() {
 
     const randomTile = filteredPuzzle[random];
     const chance = randomNumber(3);
-    let num = chance === 1 ? 2 : 4;
+    let num = chance === 1 ? 4 : 2;
 
     puzzle[randomTile[0]][randomTile[1]] = num;
   };
-
   return (
     <div className="wrapper" onKeyDown={handleKey} tabIndex={0}>
       <h1>2048</h1>
