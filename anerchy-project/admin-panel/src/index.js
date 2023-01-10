@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import State from './State';
+import Snake from './Snake';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <State />
+    {/* <State /> */}
+    <Snake />
   </React.StrictMode>
 );
 
