@@ -1,0 +1,135 @@
+body{
+    position: relative;
+}
+.body-article{
+    padding: 30px 60px 0 40px;
+}
+
+.fiveButton .main-btn{
+    background-color: #ebe9ec;
+    color: #3e3d41;
+    border: none;
+    margin-right: 10px;
+}
+.body-head p{
+    font-size: 13px;
+    line-height: 20px;
+    color: #706E72;
+}
+.body-head .author-name{
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.small-profile{
+    margin-right: 20px;
+}
+.side-bar{
+    border-left: 1px solid #ebe9ec;
+    padding: 0 24px 0 40px;
+    height: 95vh;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+.side-profile{
+    margin-top: 40px;
+}
+.side-profile p{
+    font-size: 14px;
+    color: #706E72;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.author-name{
+    font-size: 15px;
+    line-height: 20px;
+    color: #3E3D41;
+    font-weight: 700;
+    margin-top: 16px;
+}
+.hoyorYgaanYum{
+    height: 36px;
+    padding: 14px 0 40px 0;
+}
+.emailBtn {
+    margin-left: 10px;
+    background-color: #BB1A8E;
+    border-radius: 1386px;
+    color: #fff1ff;
+}
+
+.emailBtn:hover {
+    color: #BB1A8E;
+    border: 1px solid #BB1A8E;
+    background-color: white;
+}
+.card-title{
+    font-size: 15px;
+    line-height: 20px;
+    color: #3e3d41;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px !important;    
+}
+.card-profile{
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.card-article {
+    font-size: 16px;
+    line-height: 20px;
+    color: #3e3d41;
+    font-weight: bold;
+}
+.card-top{
+    font-size: 13px;
+    color: #3e3d41;
+    font-weight: 400;
+}
+.card-topNames{
+    height: 20px;
+    margin-bottom: 8px;
+}
+.card-p{
+    font-size: 12px;
+    line-height: 20px;
+    color: #706E72;
+    font-weight: 400;
+    margin: 0 5px;
+}
+.side-bar-footer a{
+    text-decoration: none;
+    color: #706E72;
+    font-size: 11px;
+    line-height: 16px;
+    padding-right: 7px;
+}
+.body-footer{
+    background-color: #f5f2f6;
+    margin-top: 30px;
+    
+}
+.body-footer-profile{
+    padding: 50px 30px 30px 30px;
+}
+.footer-card{
+    margin: 10px 30px 30px 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #D8D6DA;
+}
+.footer-date{
+    color: #706E72;
+    font-size: 13px;
+    line-height: 20px;   
+}
+.footer-title{
+    color: #3E3D41;
+    font-size: 21px;
+    line-height: 28px;
+    font-weight: 700;
+}
+.footer-article{
+    font-size: 16px;
+    line-height: 24px;
+    color: #3E3D41;
+}
