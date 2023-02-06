@@ -3,7 +3,8 @@ import Table from "./Table/Table";
 import DynamicModal from "./utils/DynamicModal";
 import Button from "react-bootstrap/Button";
 import { IconName, SlPlus } from "react-icons/sl";
-import PostCreate from "./Blogs/PostCreate";
+import PostCreate from "./Categories/EditPost";
+import "../styles/styles.css";
 
 export default function ContentWrapper({ title }) {
   const [show, setShow] = useState(false);
@@ -12,7 +13,7 @@ export default function ContentWrapper({ title }) {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="container-sm body-container">
+    <div className="container-sm body-container content-wrapper">
       <DynamicModal
         content={<PostCreate />}
         show={show}
@@ -22,7 +23,7 @@ export default function ContentWrapper({ title }) {
       />
       <div className="d-flex justify-content-around align-items-center">
         <div>
-          <h1>{title}</h1>
+          <h1>{title} hi</h1>
         </div>
         <div>
           <Button variant="primary" onClick={handleShow}>

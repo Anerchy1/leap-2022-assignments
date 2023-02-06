@@ -1,4 +1,31 @@
 .body-container{
-    max-width: 700px;
-    
+    max-width: 700px;   
+}
+
+.main-wrapper{
+    display: flex;
+    overflow: hidden;
+}
+.content-wrapper{
+    padding-left: 200px;
+    transition: 0.2s all;
+}
+.off-menu{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 56px;
+    width: 200px;
+    color: antiquewhite;
+    transition: 0.2s all;
+}
+.off-menu.hidden{
+    left: -200px;
+}
+.off-menu.hidden + .content-wrapper {
+    padding-left: 0;
+}
+.navbar-toggler{
+    display: block !important;
+    margin-right: 20px !important;
 }
