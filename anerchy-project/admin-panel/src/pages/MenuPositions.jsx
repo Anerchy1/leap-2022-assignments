@@ -1,16 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MenuPositionCreate from "../components/Menu/Positions/PositionCreate";
 import MenuPositionEdit from "../components/Menu/Positions/PositionEdit";
 import MenuPositionList from "../components/Menu/Positions/PositionList";
-import DynamicModal from "../components/utils/DynamicModal";
+import { ModalContext } from "../contexts/ModalContext";
 import Heading from "./Heading";
 
 export default function MenuPosition() {
-  const [positions, setPositions] = useState([]);
-  const [modalShow, setModalshow] = useState(false);
+  const { setModalContent, setModalShow, setModalTitle } =
+    useContext(ModalContext);
 
-  const [modalContent, setModalContent] = useState(<></>);
+  const [positions, setPositions] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:8001/menu-positions")
@@ -24,16 +25,16 @@ export default function MenuPosition() {
 
   const modalClose = () => {
     setModalContent(<></>);
-    setModalshow(false);
+    setModalShow(false);
   };
   const afterSubmit = (category) => {
-    setModalshow(false);
+    setModalShow(false);
     setPositions([...positions, category]);
   };
 
   const showCreateModal = () => {
     setModalContent(<MenuPositionCreate afterSubmit={afterSubmit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   const afterEdit = (position) => {
     modalClose();
@@ -49,19 +50,13 @@ export default function MenuPosition() {
     setModalContent(
       <MenuPositionEdit position={position} afterEdit={afterEdit} />
     );
-    setModalshow(true);
+    setModalShow(true);
   };
   return (
     <>
       <div className="body-container container-sm">
         <Heading handleShow={showCreateModal} title="Menu Positions" />
         <MenuPositionList items={positions} onEdit={showEditModal} />
-        <DynamicModal
-          content={modalContent}
-          show={modalShow}
-          handleClose={modalClose}
-          title="Create Post"
-        />
       </div>
     </>
   );

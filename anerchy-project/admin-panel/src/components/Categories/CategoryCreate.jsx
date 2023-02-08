@@ -26,32 +26,6 @@ export default function CategoryCreate({ afterSubmit }) {
         // }
         console.log(err);
       });
-    // fetch("https://demo-api-one.vercel.app/api/categories", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     Authorization: localStorage.getItem("token"),
-    //   },
-    //   body: JSON.stringify({ name, description }),
-    // })
-    //   .then((res) => {
-    //     statusCode = res.status;
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     if (statusCode === 200) {
-    //       console.log("amjilttai nemegdlee");
-    //       afterSubmit(data.body);
-    //     } else {
-    //       console.error(data.message);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     if (err.response.status === 401 || err.response.status === 403) {
-    //       navigate("/signout");
-    //     }
-    //     console.log(err);
-    //   });
   };
   return (
     <Form

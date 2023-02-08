@@ -1,16 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoryCreate from "../components/Categories/CategoryCreate";
 import EditPost from "../components/Categories/EditPost";
 import Table from "../components/Table/Table";
-import DynamicModal from "../components/utils/DynamicModal";
+import { ModalContext } from "../contexts/ModalContext";
 import Heading from "./Heading";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
-  const [modalShow, setModalshow] = useState(false);
 
-  const [modalContent, setModalContent] = useState(<></>);
+  const { setModalContent, setModalShow, setModalTitle } =
+    useContext(ModalContext);
+
   useEffect(() => {
     axios
       .get("http://localhost:8001/categories")
@@ -24,16 +25,17 @@ export default function Categories() {
 
   const modalClose = () => {
     setModalContent(<></>);
-    setModalshow(false);
+    setModalShow(false);
   };
   const afterSubmit = (category) => {
-    setModalshow(false);
+    setModalShow(false);
     setCategories([...categories, category]);
   };
 
   const showCreateModal = () => {
+    setModalTitle("Category nemeh");
     setModalContent(<CategoryCreate afterSubmit={afterSubmit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   const afterEdit = (category) => {
     modalClose();
@@ -47,19 +49,13 @@ export default function Categories() {
   };
   const showEditModal = (category) => {
     setModalContent(<EditPost category={category} afterEdit={afterEdit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   return (
     <>
       <div className="body-container container-sm">
         <Heading handleShow={showCreateModal} title="Categories" />
         <Table items={categories} onEdit={showEditModal} />
-        <DynamicModal
-          content={modalContent}
-          show={modalShow}
-          handleClose={modalClose}
-          title="Create Post"
-        />
       </div>
     </>
   );

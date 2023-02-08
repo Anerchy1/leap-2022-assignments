@@ -1,16 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoryCreate from "../components/Categories/CategoryCreate";
 import EditPost from "../components/Categories/EditPost";
 import ArticleTable from "../components/Table/ArticleTable";
-import DynamicModal from "../components/utils/DynamicModal";
+import { ModalContext } from "../contexts/ModalContext";
 import Heading from "./Heading";
 
 export default function Articles() {
-  const [categories, setCategories] = useState([]);
-  const [modalShow, setModalshow] = useState(false);
+  const { setModalContent, setModalShow, setModalTitle } =
+    useContext(ModalContext);
 
-  const [modalContent, setModalContent] = useState(<></>);
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     axios("https://demo-api-one.vercel.app/api/articles")
       .then((res) => {
@@ -30,16 +31,17 @@ export default function Articles() {
 
   const modalClose = () => {
     setModalContent(<></>);
-    setModalshow(false);
+    setModalShow(false);
   };
   const afterSubmit = (category) => {
-    setModalshow(false);
+    setModalShow(false);
     setCategories([...categories, category]);
   };
 
   const showCreateModal = () => {
+    setModalTitle("Article nemeh");
     setModalContent(<CategoryCreate afterSubmit={afterSubmit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   const afterEdit = (category) => {
     modalClose();
@@ -53,19 +55,13 @@ export default function Articles() {
   };
   const showEditModal = (category) => {
     setModalContent(<EditPost category={category} afterEdit={afterEdit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   return (
     <>
       <div className="body-container container-sm">
         <Heading handleShow={showCreateModal} title="Categories" />
         <ArticleTable items={categories} onEdit={showEditModal} />
-        <DynamicModal
-          content={modalContent}
-          show={modalShow}
-          handleClose={modalClose}
-          title="Create Post"
-        />
       </div>
     </>
   );

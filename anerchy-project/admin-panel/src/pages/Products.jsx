@@ -1,16 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoryCreate from "../components/Categories/CategoryCreate";
 import EditPost from "../components/Categories/EditPost";
 import Table from "../components/Table/Table";
-import DynamicModal from "../components/utils/DynamicModal";
+import { ModalContext } from "../contexts/ModalContext";
 import Heading from "./Heading";
 
 export default function Products() {
+  const { setModalContent, setModalShow, setModalTitle } =
+    useContext(ModalContext);
   const [products, setProducts] = useState([]);
-  const [modalShow, setModalshow] = useState(false);
 
-  const [modalContent, setModalContent] = useState(<></>);
   useEffect(() => {
     axios
       .get("http://localhost:8001/products")
@@ -24,16 +24,16 @@ export default function Products() {
 
   const modalClose = () => {
     setModalContent(<></>);
-    setModalshow(false);
+    setModalShow(false);
   };
   const afterSubmit = (products) => {
-    setModalshow(false);
+    setModalShow(false);
     setProducts([...products, products]);
   };
 
   const showCreateModal = () => {
     setModalContent(<CategoryCreate afterSubmit={afterSubmit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   const afterEdit = (products) => {
     modalClose();
@@ -47,19 +47,13 @@ export default function Products() {
   };
   const showEditModal = (category) => {
     setModalContent(<EditPost category={category} afterEdit={afterEdit} />);
-    setModalshow(true);
+    setModalShow(true);
   };
   return (
     <>
       <div className="body-container container-sm">
         <Heading handleShow={showCreateModal} title="Categories" />
         <Table items={products} onEdit={showEditModal} />
-        <DynamicModal
-          content={modalContent}
-          show={modalShow}
-          handleClose={modalClose}
-          title="Create Post"
-        />
       </div>
     </>
   );

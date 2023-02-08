@@ -4,7 +4,7 @@ import { Navbar } from "./components/Navbar";
 import ContentWrapper from "./components/ContentWrapper";
 import { useEffect, useState } from "react";
 import Heading from "./pages/Heading";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
@@ -17,10 +17,17 @@ import Articles from "./pages/Articles";
 import Products from "./pages/Products";
 import MenuPositions from "./pages/MenuPositions";
 import Menus from "./pages/Menus";
+import axios from "axios";
+import { ModalProvider } from "./contexts/ModalContext";
 
 function App() {
   const [menuShow, setMenuShow] = useState(false);
-
+  const [menus, setMenus] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8001/menus/admin").then((res) => {
+      setMenus(res.data);
+    });
+  });
   // const [me, setMe] = useState(undefined);
   // useEffect(() => {
   //   const myData = localStorage.getItem("me");
@@ -43,7 +50,7 @@ function App() {
   //   );
   // }
   return (
-    <>
+    <ModalProvider>
       <Navbar
         onToggle={() => {
           setMenuShow(!menuShow);
@@ -52,8 +59,15 @@ function App() {
 
       <div className="main-wrapper">
         <div className={`off-menu bg-dark ${!menuShow && "hidden"}`}>
-          {" "}
-          Test{" "}
+          <ul>
+            {menus.map((menu) => {
+              return (
+                <li>
+                  <Link to={menu.link}>{menu.name}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -71,7 +85,7 @@ function App() {
           <Route path="/something" element={<Heading />} />
         </Routes>
       </div>
-    </>
+    </ModalProvider>
   );
 }
 
