@@ -1,0 +1,36 @@
+get http://localhost:8000/categories/
+
+###
+GET http://localhost:8000/categories/id
+Content-Type:  application/json
+
+{
+    "id": 10
+}
+
+###
+POST http://localhost:8000/categories/
+Content-Type: application/json
+
+{
+    "name": "Technology2",
+    "slug": "tech2",
+    "imgUrl": ""
+}
+###
+DELETE http://localhost:8000/categories/
+Content-Type: application/json
+
+{
+    "id": 9
+}
+
+###
+PUT  http://localhost:8000/categories/
+Content-Type: application/json
+
+{
+    "id": 11,
+    "name": "hahaaha",
+    "slug": "hahaha"
+}

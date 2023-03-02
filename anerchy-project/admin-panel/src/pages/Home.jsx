@@ -8,6 +8,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { DemoClassComponent } from "../components/DemoClassComponent";
 
 ChartJS.register(
   CategoryScale,
@@ -61,7 +62,10 @@ export default function Home() {
         <div className="col-12">
           <Bar options={options} data={data} />;
         </div>
-        <div className="col-12">{/* <Pie data={pieData} /> */}</div>
+        <div className="col-12">
+          {/* <Pie data={pieData} /> */}
+          <DemoClassComponent />
+        </div>
       </div>
     </div>
   );

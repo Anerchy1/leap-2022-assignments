@@ -7,7 +7,7 @@ export function Navbar({ onToggle }) {
   const menuItems = [
     { label: "Home", link: "/" },
     { label: "Articles", link: "articles" },
-    { label: "Something", link: "something" },
+    { label: "Menu", link: "menu-positions" },
   ];
   const panelItems = [
     { label: "Settings", link: "#" },

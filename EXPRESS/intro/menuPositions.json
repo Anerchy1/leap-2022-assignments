@@ -1,1 +1,17 @@
-[{"name":"Undsen tses","id":1,"positionId":1,"alias":"hi"},{"id":2,"name":"Footer tses","positionId": 2,"alias":"alias 3"}]
+[
+    {
+        "id": 1,
+        "name": "Үндсэн цэс",
+        "alias": "main"
+    },
+    {
+        "id": 2,
+        "name": "Хөл цэс",
+        "alias": "footer"
+    },
+    {
+        "id": 3,
+        "name": "Админы цэс",
+        "alias": "admin"
+    }
+]

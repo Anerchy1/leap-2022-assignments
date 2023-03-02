@@ -5,11 +5,19 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const jsonParser = bodyParser.json();
 const ID = nanoid();
+const dotenv = require("dotenv");
+dotenv.config();
+const openaiPackage = require("openai");
+const configuration = new openaiPackage.Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new openaiPackage.OpenAIApi(configuration);
 
 const app = express();
+
 app.use(cors());
 
-const port = 8001;
+const port = process.env.PORT || 8001;
 
 const articles = [
   {
@@ -55,7 +63,7 @@ const articles = [
 ];
 let categories = JSON.parse(fs.readFileSync("categoryData.json", "utf-8"));
 
-const nextCatId = categories.length;
+let nextCatId = categories.length + 1;
 
 const updateCategoriesFile = () => {
   fs.writeFileSync("categoryData.json", JSON.stringify(categories));
@@ -84,7 +92,7 @@ app.delete("/categories/:id", (req, res) => {
 
 app.post("/categories", jsonParser, (req, res) => {
   const { name, description } = req.body;
-  const newCategory = { id: nextCatId++, name, description };
+  const newCategory = { id: ID, name, description };
   categories.push(newCategory);
   updateCategoriesFile();
   res.send(newCategory);
@@ -215,11 +223,11 @@ app.put("/menu-positions/:id", jsonParser, (req, res) => {
 });
 
 let menus = JSON.parse(fs.readFileSync("menus.json", "utf-8"));
+let nextMenuId = menus.length + 1;
 
 app.get("/menus", (req, res) => {
   const { positionId } = req.query;
-  if (!positionId)
-    return res.statusCode(400).json("PositionId required! ma homeboy");
+  if (!positionId) return res.status(400).json("PositionId required!");
 
   const result = menus.filter((menu) => {
     return menu.positionId === Number(positionId);
@@ -227,6 +235,49 @@ app.get("/menus", (req, res) => {
   return res.json(result);
 });
 
+app.get("/menus/:positionAlias", (req, res) => {
+  const { positionAlias } = req.params;
+  let position = null;
+  for (const row of menuPositions) {
+    if (positionAlias == row.alias) {
+      position = row;
+      break;
+    }
+  }
+  if (!position) return res.status(400).json("Position not found");
+  const result = menus.filter((menu) => {
+    return menu.positionId === position.id;
+  });
+  return res.json(result);
+});
+app.post("/menus", jsonParser, (req, res) => {
+  const { name, link, ordering, newTab, positionId } = req.body;
+  const newMenu = { id: nextMenuId, name, link, newTab, positionId, ordering };
+  menus = [...menus, newMenu];
+  fs.writeFileSync("menus.json", JSON.stringify(menus));
+  return res.json(newMenu);
+});
+
+app.delete("/menus/:id", (req, res) => {
+  const { id } = req.params;
+  menus = menus.filter((row) => row.id !== Number(id));
+  fs.writeFileSync("menus.json", JSON.stringify(menus));
+  res.json(id);
+});
+
+app.get("/generate", async (req, res) => {
+  const { prompt } = req.params;
+  const response = await openai.createImage({
+    prompt: prompt,
+    n: 1,
+    size: "256x256",
+  });
+  image_url = response.data.data[0].url;
+  res.json(image_url);
+});
+
 app.listen(port, () => {
   console.log("http://localhost:" + port);
+  // const response = await openai.listEngines();
+  // console.log(response);
 });

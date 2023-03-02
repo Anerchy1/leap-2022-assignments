@@ -60,6 +60,9 @@ function App() {
       <div className="main-wrapper">
         <div className={`off-menu bg-dark ${!menuShow && "hidden"}`}>
           <ul>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
             {menus.map((menu) => {
               return (
                 <li>
@@ -82,7 +85,6 @@ function App() {
           <Route path="/menu-positions" element={<MenuPositions />} />
           <Route path="/menu-positions/:id" element={<Menus />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/something" element={<Heading />} />
         </Routes>
       </div>
     </ModalProvider>
