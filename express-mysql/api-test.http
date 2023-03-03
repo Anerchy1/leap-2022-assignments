@@ -1,12 +1,8 @@
 get http://localhost:8000/categories/
 
 ###
-GET http://localhost:8000/categories/id
-Content-Type:  application/json
+GET http://localhost:8000/categories/10
 
-{
-    "id": 10
-}
 
 ###
 POST http://localhost:8000/categories/
@@ -18,19 +14,28 @@ Content-Type: application/json
     "imgUrl": ""
 }
 ###
-DELETE http://localhost:8000/categories/
-Content-Type: application/json
-
-{
-    "id": 9
-}
+DELETE http://localhost:8000/categories/11
 
 ###
-PUT  http://localhost:8000/categories/
+PUT  http://localhost:8000/categories/10
 Content-Type: application/json
 
 {
-    "id": 11,
-    "name": "hahaaha",
-    "slug": "hahaha"
+    "name": "qwe",
+    "slug": "qwerty"
+}
+
+// Product huseltuud
+
+###
+get http://localhost:8000/products/
+
+###
+POST  http://localhost:8000/products/
+Content-Type: application/json
+
+{
+    "name": "mashin",
+    "imgUrl": "",
+    "createdAt": null
 }

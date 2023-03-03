@@ -13,8 +13,8 @@ router.get("/", async (req, res) => {
   res.json(await getCategories());
 });
 
-router.get("/id", async (req, res) => {
-  const { id } = req.body;
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
   try {
     res.json(await getOneOfCategories(id));
   } catch (err) {
@@ -31,16 +31,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
-  const { id } = req.body;
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
   try {
     res.json(await deleteCategories(id));
   } catch (err) {
     res.status(400).json("Something went wrong");
   }
 });
-router.put("/", async (req, res) => {
-  const { name, slug, imgUrl, id } = req.body;
+router.put("/:id", async (req, res) => {
+  const { name, slug, imgUrl } = req.body;
+  const { id } = req.params;
   try {
     res.json(await updateCategories(name, slug, imgUrl, id));
   } catch (err) {

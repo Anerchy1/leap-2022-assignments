@@ -26,5 +26,5 @@ export const updateCategories = async (name, slug, imgUrl, id) => {
 };
 export const getOneOfCategories = async (id) => {
   const [result] = await pool.query(`SELECT * FROM category where id = ${id}`);
-  return result;
+  return result.length ? result[0] : null;
 };
