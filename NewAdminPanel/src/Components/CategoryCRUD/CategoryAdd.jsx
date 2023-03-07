@@ -22,13 +22,14 @@ const breadCrumbs = [
 ];
 export const CategoryAdd = () => {
   const [name, setName] = useState("");
+  const [slug, setSlug] = useState("");
   const navigate = useNavigate();
   const navigateCancel = () => {
     navigate("/categories");
   };
   const submit = () => {
     axios
-      .post("http://localhost:8001/categories", { name })
+      .post("http://localhost:8000/categories", { name, slug })
       .then((res) => {
         navigate("/categories");
       })
@@ -69,6 +70,28 @@ export const CategoryAdd = () => {
             }}
             id="outlined-basic"
             label="Name"
+            variant="outlined"
+          />
+        </Box>
+        <Box
+          component="form"
+          onSubmit={(e) => {
+            console.log(e);
+          }}
+          sx={{
+            pt: 3,
+            "& > :not(style)": { m: 1, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            value={slug}
+            onChange={(e) => {
+              setSlug(e.target.value);
+            }}
+            id="outlined-basic"
+            label="Slug"
             variant="outlined"
           />
         </Box>

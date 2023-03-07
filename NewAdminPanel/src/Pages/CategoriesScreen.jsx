@@ -11,6 +11,7 @@ import { BreadCrumbs } from "../Components/BreadCrumbs";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", flex: 1 },
+  { field: "productCount", headerName: "Name", flex: 1 },
   {
     field: "",
     headerName: "Actions",
@@ -53,7 +54,7 @@ export const CategoriesScreen = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8001/categories").then((res) => {
+    axios.get("http://localhost:8000/categories").then((res) => {
       setCategories(res.data);
     });
   }, []);

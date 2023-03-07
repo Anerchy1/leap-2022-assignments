@@ -1,7 +1,7 @@
 get http://localhost:8000/categories/
 
 ###
-GET http://localhost:8000/categories/10
+GET http://localhost:8000/categories/8XUJ1QLpW4KAV1aW_WReW
 
 
 ###
@@ -9,20 +9,21 @@ POST http://localhost:8000/categories/
 Content-Type: application/json
 
 {
-    "name": "Technology2",
-    "slug": "tech2",
-    "imgUrl": ""
+    "name": "Shoes",
+    "slug": "shoe",
+    "productCount": 0
 }
 ###
-DELETE http://localhost:8000/categories/11
+DELETE http://localhost:8000/categories/k6WiQP2tNDpubY5LV4JEu
 
 ###
-PUT  http://localhost:8000/categories/10
+PUT  http://localhost:8000/categories/GqjhI6rO0-c36ilP0vG2l
 Content-Type: application/json
 
 {
-    "name": "qwe",
-    "slug": "qwerty"
+    "name": "Car",
+    "slug": "car",
+    "productCount": 0
 }
 
 // Product huseltuud
@@ -31,11 +32,79 @@ Content-Type: application/json
 get http://localhost:8000/products/
 
 ###
+get http://localhost:8000/products/u8EcVtml6YZidjb78cH2a
+
+###
 POST  http://localhost:8000/products/
 Content-Type: application/json
 
 {
     "name": "mashin",
-    "imgUrl": "",
-    "createdAt": null
+    "slug": "car",
+    "description": "",
+    "imageUrl": "",
+    "text":"mash sain mashin",
+    "price": 500,
+    "discountPrice": 300,
+    "remaining": 10,
+    "readCount": 500,
+    "rating": 4
+}
+###
+DELETE http://localhost:8000/products/
+
+###
+PUT  http://localhost:8000/products/u8EcVtml6YZidjb78cH2a
+Content-Type: application/json
+
+{
+    "name": "mashin",
+    "slug": "car",
+    "description": "",
+    "imageUrl": "",
+    "text":"mash sain mashin",
+    "price": 500,
+    "discountPrice": 300,
+    "remaining": 9,
+    "readCount": 500,
+    "rating": 4
+}
+
+// User huseltuud
+
+###
+get http://localhost:8000/users/
+
+###
+get http://localhost:8000/users/TNoOTgfeY1Rip1CcPqPFk
+
+###
+POST  http://localhost:8000/users/
+Content-Type: application/json
+
+{
+    "first_name": "Usukhbayar",
+    "last_name": "Tumenbayar",
+    "birth_date": "1996-10-31",
+    "email": "osoho_12@yahoo.com",
+    "phone": "99619077",
+    "password": "",
+    "imageUrl": ""
+}
+###
+DELETE http://localhost:8000/users/8u2VN523BoEvg6sD9ZwKs
+
+###
+PUT  http://localhost:8000/users/TNoOTgfeY1Rip1CcPqPFk
+Content-Type: application/json
+
+{
+    "first_name": "Anerchy",
+    "last_name": "Tumenbayar",
+    "birth_date": "1996-10-31",
+    "email": "osoho_123@yahoo.com",
+    "phone": "99619070",
+    "password": "",
+    "imageUrl": ""
+
 }
