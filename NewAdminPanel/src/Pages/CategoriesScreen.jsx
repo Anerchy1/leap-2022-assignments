@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { BreadCrumbs } from "../Components/BreadCrumbs";
+import { CategoryEdit } from "../Components/CategoryCRUD/CategoryEdit";
+import { CategoryDelete } from "../Components/CategoryCRUD/CategoryDelete";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -20,12 +22,12 @@ const columns = [
     renderCell: (params) => (
       <Stack sx={{ flexDirection: "row", gap: 1 }}>
         <Tooltip title="edit">
-          <IconButton color="primary">
+          <IconButton color="primary" onClick={CategoryEdit}>
             <Edit />
           </IconButton>
         </Tooltip>
         <Tooltip title="delete">
-          <IconButton color="secondary">
+          <IconButton color="secondary" onClick={CategoryDelete}>
             <Delete />
           </IconButton>
         </Tooltip>
@@ -89,7 +91,7 @@ export const CategoriesScreen = () => {
               return setPageSize(e.target);
             }}
             rowsPerPageOptions={[5, 15]}
-            checkboxSelection
+            // checkboxSelection
           />
         </Box>
       </Stack>

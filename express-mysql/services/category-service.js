@@ -3,7 +3,7 @@ import pool from "../config/mysql-config.js";
 
 export const getCategories = async () => {
   const [result] = await pool.query(
-    "SELECT categoryId as id , name, productCount FROM category"
+    "SELECT *, categoryId as id  FROM category"
   );
   return result;
 };

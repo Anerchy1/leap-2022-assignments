@@ -1,0 +1,9 @@
+post http://localhost:8000/links
+Content-Type: application/json
+
+{
+    "url": "www.tetr.io/"
+}
+
+###
+GET  http://localhost:8000/UOg3MdGln

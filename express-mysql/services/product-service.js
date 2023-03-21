@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import slugify from "slugify";
 import pool from "../config/mysql-config.js";
 
 export const getProducts = async () => {
@@ -22,7 +23,8 @@ export const createProduct = async (product) => {
       [
         id,
         product.name,
-        product.slug,
+        slugify(),
+        // product.slug,
         product.description,
         product.imageUrl,
         product.text,
