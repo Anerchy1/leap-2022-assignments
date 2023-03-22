@@ -12,13 +12,13 @@
     <script>
         let n = Number(prompt());
 
-        let a = 0, b = 1, c = n;
-
+        let f0 = 0, f1 = 1, f2 = n;
+        console.log(f1);
         for (let i = 2; i <= n; i++) {
-            c = a + b;
-            a = b;
-            b = c;
-            console.log(c);
+            f2 = f0 + f1;
+            f0 = f1;
+            f1 = f2;
+            console.log(f2);
         }
 
 
