@@ -1,30 +1,43 @@
+import RottenTomatoesNavbar from "@/components/movie/Header";
 import { MovieCard } from "@/components/movie/MovieCard";
+import { MovieCardSkelton } from "@/components/movie/MovieCardSkeleton";
+import { Select } from "@/components/ui/Select";
+import useLoader from "@/hooks/useLoader";
+import { useQuery } from "@/hooks/useQuery";
 import { IMovie } from "@/interfaces/movie";
+import axios from "axios";
+import { nanoid } from "nanoid";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-export async function getStaticProps() {
-  const response = await fetch(`http://localhost:7070/api/movies?limit=24`);
-  const data = await response.json();
+// export async function getStaticProps() {
+//   const response = await fetch(`http://localhost:7070/api/movies?limit=24`);
+//   const data = await response.json();
+//   return {
+//     props: { data },
+//   };
+// }
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const {query} = context;
+  const {ordering ="", limit =24} = query;
+  const response = await axios.get(`http://localhost:7070/api/movies?limit=${limit}&ordering=${ordering}`)
+  const {data} = response;
+
   return {
-    props: { data },
-  };
+    props: {data}
+  }
 }
 
 export default function Home({ data }: { data: IMovie[] }): JSX.Element {
-  const [movies, setMovies] = useState<IMovie[]>(data);
 
-  const [ordering, setOrdering] = useState<string>("");
-
-  useEffect(() => {
-    if (ordering !== "") {
-      fetch(`http://localhost:7070/api/movies?limit=24&ordering=${ordering}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setMovies(data);
-        });
-    }
-  }, [ordering]);
+  const movies = data;
+  const router = useRouter();
+  const {query} = router;
+  const {ordering = "", limit = 24} = query;
+  const loading = useLoader();
+  const {addQuery} = useQuery();
 
   return (
     <>
@@ -34,30 +47,52 @@ export default function Home({ data }: { data: IMovie[] }): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+    <RottenTomatoesNavbar/>
       <div className="bg-slate-100 min-h-screen">
         <div className="container">
           <div className="bg-white">
-            <select
-              value={ordering}
-              onChange={(e): void => {
-                setOrdering(e.target.value);
+            <Select
+              items={[
+                { value: "", label: "Sort..." },
+                { value: "releasedAsc", label: "Oldest" },
+                { value: "releasedDesc", label: "Newest" },
+                { value: "imdbRatingDesc", label: "Most popular" },
+                { value: "titleAsc", label: "A-Z" },
+                { value: "titleDesc", label: "Z-A" },
+              ]}
+              onChange={(e) => {
+                addQuery({ ordering: e.target.value });
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option value="releasedAsc">Oldest</option>
-              <option value="releasedDesc">Newest</option>
-              <option value="imdbRatingDesc">Most popular</option>
-              <option value="titleAsc">A-Z</option>
-              <option value="titleDesc">Z-A</option>
-            </select>
-            <div className="p-4 grid grid-cols-6 gap-4">
-              {movies.map((movie) => (
+              value={ordering + ""}
+              itemValue={"value"}
+              itemLabel={"label"}
+            />
+
+            <Select
+              items={[
+                { value: "6", label: "6" },
+                { value: "12", label: "12" },
+                { value: "24", label: "24" },
+                { value: "48", label: "48" },
+              ]}
+              onChange={(e) => {
+                addQuery({ limit: e.target.value });
+              }}
+              value={limit + ""}
+              itemValue={"value"}
+              itemLabel={"label"}
+            />
+            <div className="p-4 grid gap-4 md:grid-cols-6 sm:grid-cols-4 grid-cols-2">
+                    {!loading 
+              ? movies.map((movie) => (
                 <MovieCard movie={movie} key={movie._id} />
+              )) : Array.from(Array(Number(limit)), ()=>(
+                <MovieCardSkelton key={nanoid()} />
               ))}
             </div>
+        
+            </div>
           </div>
-        </div>
       </div>
     </>
   );
